@@ -20,6 +20,10 @@ body {
     padding: 10px;
 }
 
+.content input[type="text"] {
+    width: 40px;
+}
+
 .content table {
     margin-left:auto; 
     margin-right:auto;

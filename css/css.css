@@ -24,6 +24,11 @@ body {
     padding: 10px;
 }
 
+.content div.content_button {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
 .content table {
     margin-left:auto; 
     margin-right:auto;

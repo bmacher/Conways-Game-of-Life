@@ -2,7 +2,7 @@
 <html lang="de">
     <head>
         <meta charset="utf-8">
-        <title>Convays Game of Life umgesetzt mit Basic JS</title>
+        <title>Conways Game of Life umgesetzt mit Basic JS</title>
         <link rel="stylesheet" href="css/css.css">
     </head>
     <body>
@@ -10,11 +10,12 @@
         <div class="header">
             <h1>Convays Game of Life</h1>
             <p>by Benjamin Macher</p>
+            <input type="text" name="size" id="inpSize" value="10"/>
+            <input type="submit" value="Create field NxN" onclick="bClickCreateField()" />
+            <label id="errMessage">Text Text Text ...</label>
         </div>
         <!-- Content Box -->
         <div class="content">
-            <input type="text" name="size" id="inpSize" value="10"/>
-            <input type="submit" value="Create field NxN" onclick="buttonClick()" />
             <table id="field"></table>
         </div>
         <!-- Javascript -->

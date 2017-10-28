@@ -15,13 +15,13 @@ body {
     text-align: center;
 }
 
+.header input[type="text"] {
+    width: 40px;
+}
+
 .content {
     background: Gray;
     padding: 10px;
-}
-
-.content input[type="text"] {
-    width: 40px;
 }
 
 .content table {
@@ -31,8 +31,15 @@ body {
 }
 
 .content table tr td  {
-    background: white;
     border: 1px solid black;
     width: 20px;
     height: 20px;
+}
+
+.content table tr td.alive {
+    background-color: black;
+}
+
+.content table tr td.dead {
+    background-color: white;
 }

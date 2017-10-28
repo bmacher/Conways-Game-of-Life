@@ -1,65 +1,66 @@
-// Main JS Code for Convays Game of Life
+// Main JS Code for Conways Game of Life
 
-// CLASS CELL
-function cell(parent, id) {
-    // PROPERTIES
-    this.id = id
-    this.state = false;  
-    // create HTML element and set id
-    this.element = document.createElement("td");
-    this.element.setAttribute("id", id);    
-    // append element to parent -> <tr>
-    parent.appendChild(this.element);
-
-    // FUNTIONS
-    // change current state of cell (true|false)
-    this.changeState = function (state) {
-        this.state = state;
-    };
-}
-
-// FUNCTIONS
-// creating new field via button click -> true|false
-function buttonClick() {
-    // get HTML elements
-    var size = document.getElementById("inpSize").value;
+// create new field via button click -> true|false
+function bClickCreateField() {
+    // get size of field
+    var size = Number(document.getElementById("inpSize").value);
+    // get field element -> <table>
     var field = document.getElementById("field");
 
-    // check, if size is a number and < 30, otherwise abort
-    if (! (size = Number(size))) {
-        alert("Your value is not a valid number...");
+    // input validation -> number between 0 and 31
+    document.getElementById("errMessage").innerText = "";
+    if (isNaN(size)) {
+        document.getElementById("errMessage").innerText = "Your value is not a valid number...";
         return false;
-    } else if (size > 30) {
-        alert("Chose a number smaller than 30...");
+    } 
+    if (size > 30) {
+        document.getElementById("errMessage").innerText = "Chose a number smaller than 30...";
+        return false;
+    }
+    if (size < 1) {
+        document.getElementById("errMessage").innerText = "Chose a number bigger than 0...";
         return false;
     }
 
     // clear field
     field.innerHTML = "";
 
-    // create field -> elements are stored in array
+    // create field with cells
     /*   ###################
         #    0   1   2   3  #
         # 1  tr  td  td  td #
         # 2  tr  td  td  td #
         # 3  tr  td  td  td # 
          ###################  */
-    cells = [];
     
-    // create rows and columns
     for (row = 1; row <= size; row++) {
-        // create row
-        cells[row] = [];
-        cells[row].push(document.createElement("tr"));
+        // create row element -> <tr>
+        var rowElement = document.createElement("tr");
         // append row to parrent -> <table>
-        field.appendChild(cells[row][0]);
+        field.appendChild(rowElement); 
 
-        // create columns 
-        for (column = 1; column <= size; column++) {
-            // create cell and append to cells[row][column]
-            cells[row].push(new cell(cells[row][0], row +"_"+ column))
+        // create cells
+        for (col = 1; col <= size; col++) {
+            // create cell and set attributes -> <td id="row_column" class="dead" onClick="ToggleState()">
+            var cell = document.createElement("td");
+            cell.setAttribute("id", row+"_"+col);
+            cell.setAttribute("class", "dead");
+            cell.setAttribute("onclick", "toogleState(this)");
+            // append cell to parrent -> <tr>
+            rowElement.appendChild(cell);
         }
     }
 
     return true;
 }
+
+// toogle state of selected cell
+function toogleState (cell) {
+    if (cell.getAttribute("class") === "dead") {
+        cell.setAttribute("class", "alive");
+    } else {
+        cell.setAttribute("class", "dead");
+    }
+}
+
+bClickCreateField();

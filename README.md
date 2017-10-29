@@ -1,6 +1,7 @@
 # Conways Game of Life with basic Javascript
 
-This repository contains a basic JS script to simulate Conways Game of Life. 
+Dieses Repository enthält ein einfaches JS-Skript, um Conways Game of Life zu simulieren. Das bedeutet, dass keine zusätzlichen Bibliotheken (jQuery, Angular, ...) verwendet werden.
+
 > "The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970." ([Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life "Conway's Game of Life"))
 
 The following four rules determine whether a cell will live or not:

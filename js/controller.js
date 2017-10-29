@@ -139,5 +139,3 @@ function validateCoordinate(coor, max) {
     }
     return coor;
 }
-
-createField();

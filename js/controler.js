@@ -1,5 +1,18 @@
 //Main JS Code for Conways Game of Life
 
+//CLASS: cell
+class cell {
+    // id = row_col, parent = <tr>
+    constructor(id, parent) {
+        this.id = id;
+        this.cell = document.createElement("td");
+        this.cell.setAttribute("id", id);
+        this.cell.setAttribute("class", "dead");
+        this.cell.setAttribute("onclick", "toggleStateOfCell(this)");
+        parent.appendChild(this.cell);
+    }
+}
+
 function createField() {
     var fieldsize = Number(document.getElementById("inpFieldsize").value);
     var field = document.getElementById("field");

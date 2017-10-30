@@ -11,7 +11,7 @@ The following four rules determine whether a cell will live or not:
 3. Any live cell with more than three live neighbours dies, as if by overpopulation.
 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
-## There some interesting start generations
+## There are some interesting start generations
 
 Still lifes (static patterns)
 > ![Block](https://upload.wikimedia.org/wikipedia/commons/9/96/Game_of_life_block_with_border.svg) Block

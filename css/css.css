@@ -48,3 +48,13 @@ body {
 .content table tr td.dead {
     background-color: white;
 }
+
+.bottom {
+    background: MediumSeaGreen;
+    text-align: center;
+    height: 20px;
+}
+
+.bottom p {
+    margin: 0;
+}

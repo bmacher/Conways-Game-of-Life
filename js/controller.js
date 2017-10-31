@@ -1,5 +1,21 @@
 //Main JS Code for Conways Game of Life
 
+function toggleStateOfCell(cell) {
+    if (cell.getAttribute("class") == "dead") {
+        cell.setAttribute("class", "alive");
+    } else {
+        cell.setAttribute("class", "dead");
+    }
+}
+
+function showCellCoordinates(row, col) {
+    document.getElementById("cellCoordinates").innerText = "Coordinates "+row+":"+col;
+}
+
+function hideCellCoordinates() {
+    document.getElementById("cellCoordinates").innerText = "";
+}
+
 function createField() {
     var fieldsize = Number(document.getElementById("inpFieldsize").value);
     var field = document.getElementById("field");
@@ -35,19 +51,13 @@ function createField() {
             cell.setAttribute("id", row+"_"+col);
             cell.setAttribute("class", "dead");
             cell.setAttribute("onclick", "toggleStateOfCell(this)");
+            cell.setAttribute("onmouseover", "showCellCoordinates("+row+","+col+")");
+            cell.setAttribute("onmouseout", "hideCellCoordinates()")
             rowElem.appendChild(cell);
         }
     }
 
     return true;
-}
-
-function toggleStateOfCell(cell) {
-    if (cell.getAttribute("class") == "dead") {
-        cell.setAttribute("class", "alive");
-    } else {
-        cell.setAttribute("class", "dead");
-    }
 }
 
 function createNextGeneration(fieldsize) {

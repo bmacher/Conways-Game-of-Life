@@ -20,10 +20,13 @@ function validateInput(value) {
 }
 
 function toggleStateOfCell(cell) {
-    if (cell.getAttribute("class") == "dead") {
-        cell.setAttribute("class", "alive");
-    } else {
-        cell.setAttribute("class", "dead");
+    //Check, if game ist running
+    if (! document.getElementById("startGame").disabled) {
+        if (cell.getAttribute("class") == "dead") {
+            cell.setAttribute("class", "alive");
+        } else {
+            cell.setAttribute("class", "dead");
+        }
     }
 }
 
@@ -35,14 +38,31 @@ function hideCellCoordinates() {
     document.getElementById("cellCoordinates").innerText = "";
 }
 
+function startGame(fieldsize) {
+    var timer = window.setInterval(function () { createNextGeneration(fieldsize) }, 500);
+    //Disable next generation and start button
+    document.getElementById("nextGenHandler").disabled = true;
+    document.getElementById("startGame").disabled = true;
+    //Append onclick event with timerId to stop button
+    document.getElementById("stopGame").setAttribute("onclick", "stopGame("+timer+")")
+}
+
+function stopGame(timerId) {
+    clearInterval(timerId)
+    //Enable next generation and start button
+    document.getElementById("nextGenHandler").disabled = false;
+    document.getElementById("startGame").disabled = false;
+}
+
 function createField() {
     var fieldsize = Number(document.getElementById("inpFieldsize").value);
     var field = document.getElementById("field");
     
     //Validate input
     if (validateInput(fieldsize) === true) {
-        //Set current fieldsize for next generation
+        //Set current fieldsize for next generation and start game
         document.getElementById("nextGenHandler").setAttribute("onclick", "createNextGeneration("+fieldsize+")");
+        document.getElementById("startGame").setAttribute("onclick", "startGame("+fieldsize+")");
 
         //Start creating field
         field.innerHTML = "";
@@ -82,7 +102,7 @@ function validateCoordinate(coor, max) {
     return coor;
 }
 
-function getNewStateOfCell (row, col, fieldsize) {
+function getNewStateOfCell(row, col, fieldsize) {
     var cell = document.getElementById(row+"_"+col);
     var neighboursAlive = 0;
     var neighbourCell;
@@ -150,6 +170,3 @@ function createNextGeneration(fieldsize) {
         }
     }
 }
-
-document.getElementById("inpFieldsize").value = 10;
-createField();

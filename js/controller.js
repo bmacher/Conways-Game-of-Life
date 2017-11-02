@@ -2,7 +2,7 @@
 
 function validateInput(value) {
     document.getElementById("errMessage").innerText = "";
-
+    //The input must be a number between 1 and 30
     if (isNaN(value)) {
         document.getElementById("errMessage").innerText = "Your value is not a valid number...";
         return false;
@@ -39,12 +39,12 @@ function hideCellCoordinates() {
 }
 
 function startGame(fieldsize) {
-    var timer = window.setInterval(function () { createNextGeneration(fieldsize) }, 500);
+    var timer = window.setInterval(function () { createNextGeneration(fieldsize); }, 500);
     //Disable next generation and start button
     document.getElementById("nextGenHandler").disabled = true;
     document.getElementById("startGame").disabled = true;
     //Append onclick event with timerId to stop button
-    document.getElementById("stopGame").setAttribute("onclick", "stopGame("+timer+")")
+    document.getElementById("stopGame").setAttribute("onclick", "stopGame("+timer+")");
 }
 
 function stopGame(timerId) {
@@ -56,14 +56,12 @@ function stopGame(timerId) {
 
 function createField() {
     var fieldsize = Number(document.getElementById("inpFieldsize").value);
-    var field = document.getElementById("field");
-    
+    var field = document.getElementById("field");   
     //Validate input
     if (validateInput(fieldsize) === true) {
         //Set current fieldsize for next generation and start game
         document.getElementById("nextGenHandler").setAttribute("onclick", "createNextGeneration("+fieldsize+")");
         document.getElementById("startGame").setAttribute("onclick", "startGame("+fieldsize+")");
-
         //Start creating field
         field.innerHTML = "";
         var rowElement, cell;

@@ -48,7 +48,7 @@ function startGame(fieldsize) {
 }
 
 function stopGame(timerId) {
-    clearInterval(timerId)
+    clearInterval(timerId);
     //Enable next generation and start button
     document.getElementById("nextGenHandler").disabled = false;
     document.getElementById("startGame").disabled = false;
@@ -77,7 +77,7 @@ function createField() {
                 cell.setAttribute("class", "dead"); // Cells are dead by default
                 cell.setAttribute("onclick", "toggleStateOfCell(this)");
                 cell.setAttribute("onmouseover", "showCellCoordinates("+row+","+col+")");
-                cell.setAttribute("onmouseout", "hideCellCoordinates()")
+                cell.setAttribute("onmouseout", "hideCellCoordinates()");
                 rowElement.appendChild(cell);
             }
         }
@@ -152,14 +152,14 @@ function createNextGeneration(fieldsize) {
         }
     }
     //Set new state of all cells -> temporary stored in statesOfCells
-    for (var row=1; row<=fieldsize; row++) {
-        for (var col=1; col<=fieldsize; col++) {
+    for (row=1; row<=fieldsize; row++) {
+        for (col=1; col<=fieldsize; col++) {
             statesOfCells[row][col] = getNewStateOfCell(row, col, fieldsize); 
         }
     }
     //Update states of cell elements
-    for (var row=1; row<=fieldsize; row++) {
-        for (var col=1; col<=fieldsize; col++) {
+    for (row=1; row<=fieldsize; row++) {
+        for (col=1; col<=fieldsize; col++) {
             if (statesOfCells[row][col] === true) {
                 document.getElementById(row+"_"+col).setAttribute("class", "alive");
             } else {

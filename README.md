@@ -1,4 +1,4 @@
-# Conways Game of Life with basic Javascript
+# Conways Game of Life with Javascript
 
 I wanted to learn JavaScript and thought it would be the best way to write Conways Game of life with it. To get basic knowledge about it I started with pure JavaScript, that means I haven't used any frameworks. Now I want to get the same result by using jQuery and Angular and maybe React to discover common JS frameworks. The last step will be an Angular frontend and Node.js backend to learn about REST API and AJAX.
 

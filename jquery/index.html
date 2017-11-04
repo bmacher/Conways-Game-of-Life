@@ -9,26 +9,32 @@
         <link rel="stylesheet" href="css/css.css">
     </head>
     <body>
-        <!-- Head Box -->
-        <div class="header">
-            <h1>Conways Game of Life</h1>
-            <p>by Benjamin Macher</p>
-            <input id="inpFieldSize"type="text" />
-            <input id="btnCrtField" type="submit" value="Create field NxN" />
-            <label id="lbErrMsg"></label>
-        </div>
-        <!-- Content Box -->
-        <div class="content">
-            <div class="content_button">
-                <input id="btnStrtGame" type="button" value="Start" />
-                <input id="btnNextGen" type="button" value="Create next generation" />
-                <input id="btnStpGame" type="button" value="Stop" />
+        <div class="background">
+            <!-- HEADER -->
+            <div class="header">
+                <h1>Conways Game of Life</h1>
+                <p>by Benjamin Macher</p>
+                <div>
+                    <input id="inpFieldSize"type="text" />
+                    <input id="btnCrtField" type="submit" value="Create field NxN" />
+                </div>
+                <div>
+                    <label id="lbErrMsg"></label>
+                </div>
             </div>
-            <table id="tblField"></table>
-        </div>
-        <!-- Content Box -->
-        <div class="bottom">
-            <p id="pCellCoordinates"></p>
+            <!-- CONTENT -->
+            <div class="content">
+                <div id="divControl" class="control">
+                    <input id="btnStrtGame" type="button" value="Start" />
+                    <input id="btnNextGen" type="button" value="Next generation" />
+                    <input id="btnStpGame" type="button" value="Stop" />
+                </div>
+                <table id="tblField"></table>
+            </div>
+            <!-- FOOTER -->
+            <div class="footer">
+                <p id="pCellCoordinates"></p>
+            </div>
         </div>
     </body>
 </html>

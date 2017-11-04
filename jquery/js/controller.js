@@ -1,17 +1,30 @@
-//JS Code for Conways Game of Life using jQuery
+// JS Code for Conways Game of Life using jQuery
 
 $(function(){
     "use strict";
+
+    // VARIABLES -----------
+    var fieldSize;
     
-    //Input should be a number between 1 and 30 -> true || false
+    // GET HTML ELEMENTS ---
+    var field = $( "#tblField" );
+    var inpFieldSize = $( "#inpFieldSize" );
+    var btnCrtField  = $( "#btnCrtField" );
+    var btnStrtGame  = $( "#btnStrtGame" );
+    var btnNextGen   = $( "#btnNextGen" );
+    var btnStpGame   = $( "#btnStpGame" );
+    
+    // HELPERS -------------
+
     function validateInput( value ) {
         $( "#lbErrMsg" ).html( "" );
-
+        
+        // check, if input is a number between 1 and 30 -> true || false
         if ( isNaN( value ) ) {
             $( "#lbErrMsg" ).html( "Your input is not a number..." );
             return false;
         }
-        if ( value < 0 || value > 30 ) {
+        if ( value < 1 || value > 30 ) {
             $( "#lbErrMsg" ).html( "Your input has to be between 1 and 30..." );
             return false;
         }
@@ -19,53 +32,62 @@ $(function(){
         return true;
     }
 
-    //Toggle the state of cell
-    function toggleStateOfCell(cell) {
-        //Check, if game ist running
-        //if (! document.getElementById("startGame").disabled) {
-        if ( cell.attr( "class" ) === "dead" ) {
-            cell.attr( "class", "alive" );
-        } else {
-            cell.attr( "class", "dead" );
+    function toggleStateOfCell( cell ) {
+        // Check, if game ist running
+        if (! $( "#btnStrtGame" ).prop( "disabled" ) ) {
+            cell.toggleClass( "alive" );
+            cell.toggleClass( "dead" );
         }
-        //}
     }
 
-    //Create field with given field size
-    $( "#btnCrtField" ).click(function(){
-        var fieldSize = Number( $( "#inpFieldSize" ).val() );
-        var field = $( "#tblField" );
+    function validateCoordinate( coor, max ) {
+        // Correct neighbour coordinates for 1_1
+        //   max_max max_1 max_2 
+        //   1_max   1_1   1_2     
+        //   2_max   2_1   2_2
+        // 0 -> max & (max + 1) -> 1
+        if ( coor < 1 ) {
+            return max;
+        }
+        if ( coor > max)  {
+            return 1;
+        }
 
-        //Validate input
-        if ( validateInput( fieldSize ) ) {
-            //Set current field size for next generation and start game
-            // btnStrtGame
-            // btnNextGen
+        return coor;
+    }
+    
+    // CORE FUNCTIONS -------
+
+    function createField() {
+        if ( validateInput( fieldSize ) === true ) {
+            // show control buttons
+            $( "#divControl" ).show();
         
-            //Start creating field
+            //clear field
             field.empty();
-            var tableRow, cell;
             
+            // start creating field
+            var tr, cell;
             for ( var row = 1; row <= fieldSize; row++ ) {           
-                //Create and append row
-                tableRow = $( "<tr></tr>" );
-                field.append( tableRow );
+                // create and append row
+                tr = $( "<tr></tr>" );
+                field.append( tr );
                 for ( var col = 1; col <= fieldSize; col++ ) {
-                    //Create and append cell
+                    // create and append cell
                     cell = $( "<td></td>" );
                     
-                    //Add id and class to cell
-                    // <td id="row_col" class="dead"></td>
+                    // add id and class to cell
+                    //  cell = <td id="row_col" class="dead"></td>
                     cell.attr({
                         "id": row + "_" + col,
                         "class": "dead"
                     });
 
-                    tableRow.append( cell );
+                    tr.append( cell );
                 }
             }
 
-            //Add event handlers to all cells
+            // add event handlers to all cells
             $( ".content table tr td" ).on({
                 click: function(){
                     toggleStateOfCell( $( this ) );
@@ -78,10 +100,18 @@ $(function(){
                 }
             });
         }
+    }
+
+    // EVENT HANDLERS -------
+
+    // click on "Create field NxN"
+    btnCrtField.click(function(){
+        fieldSize = Number( inpFieldSize.val() );
+        createField();
     });
 
-    //------------------------------------------------
-    //Delete the following parameters in final version
-    $( "#inpFieldSize" ).val(12);
+    //  ------------------------------------------------
+    //  delete the following parameters in final version
+    $( "#inpFieldSize" ).val(10);
     $( "#btnCrtField" ).trigger( "click" );
  });

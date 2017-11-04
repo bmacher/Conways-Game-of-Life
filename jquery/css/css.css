@@ -1,13 +1,14 @@
-* {
-    box-sizing: border-box;
-}
-
 body {
   margin: 0;
 }
 
+.background {
+    background: #40D26E;
+    border: 3px solid #CFF417;
+}
+
 .header {
-    background: MediumSeaGreen;
+    background: rgba(0, 0, 0, 0.1);
     padding: 10px;
 }
 
@@ -15,16 +16,20 @@ body {
     text-align: center;
 }
 
-.header input[type="text"] {
+.header div {
+    text-align: center;
+}
+
+.header div input[type="text"] {
     width: 40px;
 }
 
 .content {
-    background: Gray;
     padding: 10px;
 }
 
-.content div.content_button {
+.content div.control {
+    display: none;
     text-align: center;
     margin-bottom: 10px;
 }
@@ -42,19 +47,19 @@ body {
 }
 
 .content table tr td.alive {
-    background-color: black;
+    background-color: #FFA03C;
 }
 
 .content table tr td.dead {
     background-color: white;
 }
 
-.bottom {
-    background: MediumSeaGreen;
+.footer {
+    background: rgba(0, 0, 0, 0.1);
     text-align: center;
     height: 20px;
 }
 
-.bottom p {
+.footer p {
     margin: 0;
 }

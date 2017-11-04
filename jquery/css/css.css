@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.header {
+    background: MediumSeaGreen;
+    padding: 10px;
+}
+
+.header h1, p {
+    text-align: center;
+}
+
+.header input[type="text"] {
+    width: 40px;
+}
+
+.content {
+    background: Gray;
+    padding: 10px;
+}
+
+.content div.content_button {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.content table {
+    margin-left:auto; 
+    margin-right:auto;
+    border-collapse: collapse;
+}
+
+.content table tr td  {
+    border: 1px solid black;
+    width: 20px;
+    height: 20px;
+}
+
+.content table tr td.alive {
+    background-color: black;
+}
+
+.content table tr td.dead {
+    background-color: white;
+}
+
+.bottom {
+    background: MediumSeaGreen;
+    text-align: center;
+    height: 20px;
+}
+
+.bottom p {
+    margin: 0;
+}

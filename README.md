@@ -32,4 +32,4 @@ Spaceship (travels across the board)
 For more: [Examples of patterns](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Examples_of_patterns "Examples of patterns")
 
 ---------
-Source: https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
+Source: [Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)

@@ -112,6 +112,6 @@ $(function(){
 
     //  ------------------------------------------------
     //  delete the following parameters in final version
-    $( "#inpFieldSize" ).val(10);
-    $( "#btnCrtField" ).trigger( "click" );
+    //$( "#inpFieldSize" ).val(10);
+    //$( "#btnCrtField" ).trigger( "click" );
  });

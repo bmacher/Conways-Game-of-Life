@@ -1,6 +1,13 @@
 # Conways Game of Life with basic Javascript
 
-This repository contains a simple JS script to simulate Conways Game of Life. This means that no additional libraries (jQuery, Angular,...) are used.
+I wanted to learn JavaScript and thought it would be the best way to write Conways Game of life with it. To get basic knowledge about it I started with pure JavaScript, that means I haven't used any frameworks. Now I want to get the same result by using jQuery and Angular and maybe React to discover common JS frameworks. The last step will be an Angular frontend and Node.js backend to learn about REST API and AJAX.
+
+I get all my knowledge from:
+- [SoloLearn](https://www.sololearn.com) (JS, jQuery, HTML and CSS courses)
+- [w3schools](https://www.w3schools.com)
+- [Traversy Media](https://www.youtube.com/user/TechGuyWeb) (awsome youtube tutorials)
+
+## About Conways Game of Life
 
 > "The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970." ([Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life "Conway's Game of Life"))
 

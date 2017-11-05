@@ -56,7 +56,7 @@ $(function(){
             // show control buttons
             $( "#divControl" ).show();
         
-            //clear field
+            // clear field
             $( "#tblField" ).empty();
             
             // start creating field
@@ -84,13 +84,13 @@ $(function(){
 
             // add event handlers to all cells
             $( ".content table tr td" ).on({
-                click: function(){
+                click: function click_cell(){
                     toggleStateOfCell( $( this ) );
                 },
-                mouseenter: function(){
+                mouseenter: function mouseenter_cell(){
                     $( "#pCellCoordinates" ).text( "Coordinates " + $( this ).attr( "id" ) );
                 },
-                mouseleave: function(){
+                mouseleave: function mouseleave_cell(){
                     $( "#pCellCoordinates" ).text( "" );
                 }
             });

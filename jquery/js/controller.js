@@ -121,21 +121,21 @@ $(function(){
         if ( cell.attr( "class" ) === "alive" && livingNeighbours < 2 ) {
             return "dead";
         }
-        //2. Any live cell with two or three live neighbours lives on to the next generation.
-        if ( cell.attr( "class" )  === "alive" && livingNeighbours >= 2 && livingNeighbours <= 3 ) {
+        // 2. Any live cell with two or three live neighbours lives on to the next generation.
+        if ( cell.attr( "class" ) === "alive" && livingNeighbours >= 2 && livingNeighbours <= 3 ) {
             return "alive";
         }
-        //3. Any live cell with more than three live neighbours dies, as if by overpopulation.
+        // 3. Any live cell with more than three live neighbours dies, as if by overpopulation.
         if ( cell.attr( "class" ) === "alive" && livingNeighbours > 3 ) {
             return "dead";
         }
-        //4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+        // 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
         if ( cell.attr( "class" ) === "dead" && livingNeighbours === 3 ) {
             return "alive";
         }
 
         return "dead";
-        }
+    }
 
     function createNextGeneration(){
         var cells = [];
@@ -175,7 +175,7 @@ $(function(){
 
     // click on "Create field NxN"
     $( "#btnCrtField" ).click( function click_btnCrtField(){
-        // set fieldSize only if input ist a number
+        // set fieldSize only if input is a number
         if ( validateInput( Number( $( "#inpFieldSize" ).val() ) ) ) {
             fieldSize = Number( $( "#inpFieldSize" ).val() );
             createField();

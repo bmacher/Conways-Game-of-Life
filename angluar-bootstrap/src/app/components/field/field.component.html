@@ -1,0 +1,32 @@
+<div class="content">
+  <!-- FIELD -->
+  <div class="field">
+    <!-- FIELD CONTROL -->
+    <div class="control">
+      <div class="btn-group btn-group">
+        <button type="button" class="btn btn-primary active">Start</button>
+        <button type="button" class="btn btn-primary">Next Generation</button>
+        <button type="button" class="btn btn-danger">Stop</button>
+      </div>
+    </div>
+    <!-- CELLS -->
+    <table>
+     <tr *ngFor="let row of field; let i = index">
+       <td *ngFor="let col of row" class="{{col}}"></td>
+     </tr>
+    </table>
+  </div>
+  <!-- COORDINATES -->
+  <div class="coordinates">
+    <h4>Coordinates</h4>
+  </div>
+</div>
+
+<!--
+  <table>
+     <ng-container *ngFor="let group of groups">
+         <tr><td><h2>{{item.name}}<h2></td></tr>
+         <tr *ngFor="let item of group.items"><td>{{item}}</td></tr>
+     </ng-container>
+  </table>
+-->

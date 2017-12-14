@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-field',
@@ -6,15 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./field.component.css']
 })
 export class FieldComponent implements OnInit {
-  // tslint:disable-next-line:max-line-length
-  field = [
-    [ 'alive', 'dead'],
-    [ 'dead', 'alive']
-  ];
+  field = [];
+  fieldSize = +this.route.snapshot.paramMap.get('fieldsize');
 
-  constructor() { }
+  constructor( private route: ActivatedRoute ) { }
 
   ngOnInit() {
+    for ( let x = 0; x < this.fieldSize; x++ ) {
+      this.field[ x ] = [];
+      for ( let y = 0; y < this.fieldSize; y++ ) {
+        this.field[ x ][ y ] = 'alive';
+      }
+    }
   }
-
 }

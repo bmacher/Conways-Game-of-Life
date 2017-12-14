@@ -6,7 +6,7 @@ import { FieldComponent } from '../components/field/field.component';
 
 // ROUTES
 const routes: Routes = [
-  { path: 'field', component: FieldComponent }
+  { path: 'field/:fieldsize', component: FieldComponent }
 ];
 
 @NgModule({

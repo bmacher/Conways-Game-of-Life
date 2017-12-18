@@ -1,6 +1,7 @@
 // MODULS | LIBRAIES
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // ROUTER
 import { AppRoutingModule } from './router/app-routing.module';
@@ -9,6 +10,9 @@ import { AppRoutingModule } from './router/app-routing.module';
 import { AppComponent } from './app.component';
 import { FieldComponent } from './components/field/field.component';
 
+// SERVICES
+import { FieldService } from './services/field.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,9 +20,12 @@ import { FieldComponent } from './components/field/field.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    FieldService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

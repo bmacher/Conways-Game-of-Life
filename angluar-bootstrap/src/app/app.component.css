@@ -12,3 +12,9 @@
 .header h1, h4 {
     text-align: center;
 }
+
+.header div.alert {
+    border: 2px solid;
+    margin: 5px;
+    text-align: center;
+}

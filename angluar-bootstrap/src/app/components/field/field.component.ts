@@ -7,17 +7,21 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./field.component.css']
 })
 export class FieldComponent implements OnInit {
-  field = [];
-  fieldSize = +this.route.snapshot.paramMap.get('fieldsize');
+  field: Array<Array<String>> = [[]];
+  fieldSize: number;
 
-  constructor( private route: ActivatedRoute ) { }
+  constructor( private route: ActivatedRoute ) {
+    if (this.route.snapshot.paramMap.get('fieldsize') != null) {
+      this.fieldSize = +this.route.snapshot.paramMap.get('fieldsize');
+    }
 
-  ngOnInit() {
     for ( let x = 0; x < this.fieldSize; x++ ) {
       this.field[ x ] = [];
       for ( let y = 0; y < this.fieldSize; y++ ) {
-        this.field[ x ][ y ] = 'alive';
+        this.field[ x ][ y ] = 'dead';
       }
     }
-  }
+   }
+
+  ngOnInit() { }
 }

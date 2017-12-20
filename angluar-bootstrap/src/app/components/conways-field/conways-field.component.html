@@ -12,7 +12,7 @@
     </div>
     <!-- FIELD -->
     <table>
-     <tr *ngFor="let row of fieldManager.field; index as x">
+     <tr *ngFor="let row of fieldManager.field.cells; index as x">
        <td 
         *ngFor="let col of row; index as y"
         [ngClass]="{'alive': col, 'dead': !col}"

@@ -1,0 +1,15 @@
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Conways Game of Life</h1>
+    <div class="input-group input-group mx-auto" style="width:220px;">
+      <input type="text" name="fieldSize" [(ngModel)]="fieldSize" class="form-control" placeholder="Size" aria-label="Size">
+      <span class="input-group-btn">
+        <button class="btn btn-primary" type="button" (click)="btnCrtFieldClick()">Create field NxN</button>
+      </span>
+    </div>
+    
+    <!-- ERROR HANDLER -->
+    <div *ngIf="errMessage" class="alert alert-danger" role="alert">
+      {{errMessage}}
+    </div>
+  </div>

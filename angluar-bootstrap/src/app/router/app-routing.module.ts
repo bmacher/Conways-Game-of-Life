@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // COMPONENTS
-import { FieldComponent } from '../components/field/field.component';
+import { ConwaysNavComponent } from '../components/conways-nav/conways-nav.component';
+import { ConwaysFieldComponent } from '../components/conways-field/conways-field.component';
 
 // ROUTES
 const routes: Routes = [
-  { path: 'field/:fieldsize', component: FieldComponent }
+  { path: '', redirectTo: '/nav', pathMatch: 'full' },
+  { path: 'nav', component: ConwaysNavComponent },
+  { path: 'conways-field/:fieldsize', component: ConwaysFieldComponent }
 ];
 
 @NgModule({

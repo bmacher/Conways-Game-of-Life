@@ -8,15 +8,17 @@ import { AppRoutingModule } from './router/app-routing.module';
 
 // COMPONENTS
 import { AppComponent } from './app.component';
-import { FieldComponent } from './components/field/field.component';
+import { ConwaysNavComponent } from './components/conways-nav/conways-nav.component';
+import { ConwaysFieldComponent } from './components/conways-field/conways-field.component';
 
 // SERVICES
-import { FieldService } from './services/field.service';
+import { FieldManager } from './services/field-manager.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FieldComponent
+    ConwaysNavComponent,
+    ConwaysFieldComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,7 @@ import { FieldService } from './services/field.service';
     FormsModule
   ],
   providers: [
-    FieldService
+    FieldManager
   ],
   bootstrap: [AppComponent]
 })

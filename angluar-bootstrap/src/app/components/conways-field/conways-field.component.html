@@ -1,6 +1,7 @@
 <div class="content">
-  <!-- FIELD -->
   <div class="field">
+    <!-- NAVIGATION -->
+    <a routerLink="/nav">Back</a>
     <!-- FIELD CONTROL -->
     <div class="control">
       <div class="btn-group btn-group">
@@ -9,10 +10,14 @@
         <button type="button" class="btn btn-danger">Stop</button>
       </div>
     </div>
-    <!-- CELLS -->
+    <!-- FIELD -->
     <table>
-     <tr *ngFor="let row of field">
-       <td *ngFor="let col of row" class="{{col}}"></td>
+     <tr *ngFor="let row of fieldManager.field; index as x">
+       <td 
+        *ngFor="let col of row; index as y"
+        [ngClass]="{'alive': col, 'dead': !col}"
+        (click)="fieldManager.toggleStateOfCell( x, y )">
+      </td>
      </tr>
     </table>
   </div>

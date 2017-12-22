@@ -94,11 +94,6 @@ export class FieldManager {
         this.field.cells[row].push(false);
       }
     }
-    this.field.cells[0][0] = true;
-    this.field.cells[2][0] = true;
-    this.field.cells[1][1] = true;
-    this.field.cells[1][2] = true;
-    this.field.cells[2][1] = true;
   }
 
   createNextGeneration (): void {

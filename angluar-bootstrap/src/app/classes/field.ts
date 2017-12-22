@@ -1,4 +1,5 @@
 export class Field {
     size: number;
-    cells: boolean[][];
+    cells: Array<Array<boolean>>;
+    running: boolean;
 }

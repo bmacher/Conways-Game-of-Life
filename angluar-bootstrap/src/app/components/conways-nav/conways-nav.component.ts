@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./conways-nav.component.css']
 })
 export class ConwaysNavComponent implements OnInit {
-  fieldSize: number;
-  errMessage = '';
+  private fieldSize: number;
+  private errMessage = '';
 
   constructor ( private router: Router ) {}
 
@@ -35,7 +35,6 @@ export class ConwaysNavComponent implements OnInit {
     return true;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

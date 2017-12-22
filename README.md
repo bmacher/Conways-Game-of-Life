@@ -5,7 +5,7 @@ I wanted to learn JavaScript and thought it would be the best way to write Conwa
 Implementation with
 - [Basic JavaScript](https://en.wikipedia.org/wiki/JavaScript) ✅
 - [jQuery](https://jquery.com) ✅
-- [Angular](https://angular.io) & [Bootstrap](https://www.getbootstrap.com)
+- [Angular](https://angular.io) & [Bootstrap](https://www.getbootstrap.com) ✅
 - Angluar + [Node.js](https://nodejs.org/en/)
 - ([React](https://reactjs.org))
 

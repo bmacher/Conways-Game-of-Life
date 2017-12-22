@@ -5,9 +5,9 @@ import { Field } from '../classes/field';
 @Injectable()
 export class FieldManager {
   field: Field;
-  
+
   constructor () {  }
-  
+
   // HELPERS --------------
 
   toggleStateOfCell (row, col: number): void {
@@ -20,8 +20,8 @@ export class FieldManager {
 
   validateCoordinate( coordinate ) {
     // Correct neighbour coordinates for 1_1
-    //   max_max max_1 max_2 
-    //   0_max-1   0_1   0_2     
+    //   max_max max_1 max_2
+    //   0_max-1   0_1   0_2
     //   1_max-1   1_0   1_1
     // -1 -> max & (max) -> 0
     if ( coordinate < 0 ) {
@@ -88,7 +88,7 @@ export class FieldManager {
     for ( let row = 0; row < fieldSize; row++ ) {
       // append row
       this.field.cells.push([]);
-      
+
       for ( let col = 0; col < fieldSize; col++ ) {
         // append cell
         this.field.cells[row].push(false);
@@ -115,10 +115,10 @@ export class FieldManager {
 
     // update states
     for ( let row = 0; row < this.field.size; row++ ) {
-      
+
       for ( let col = 0; col < this.field.size; col++ ) {
         this.field.cells[row][col] = this.getNewStateOfCell( currentStateOfCells, row, col );
       }
-    }    
+    }
   }
 }

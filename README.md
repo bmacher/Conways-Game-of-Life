@@ -6,7 +6,7 @@ Implementation with
 - [Basic JavaScript](https://en.wikipedia.org/wiki/JavaScript) ✅
 - [jQuery](https://jquery.com) ✅
 - [Angular](https://angular.io) & [Bootstrap](https://www.getbootstrap.com) ✅
-- Angluar + [Node.js](https://nodejs.org/en/)
+- Angluar + [Node.js](https://nodejs.org/en/) + [Express](http://expressjs.com/de/)
 - ([React](https://reactjs.org))
 
 I get all my knowledge from:

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './conways-nav.component.html',
   styleUrls: ['./conways-nav.component.css']
 })
-export class ConwaysNavComponent implements OnInit {
+export class ConwaysNavComponent {
   private fieldSize: number;
   private errMessage = '';
 
@@ -34,7 +34,4 @@ export class ConwaysNavComponent implements OnInit {
     this.router.navigate( [ '/conways-field/', this.fieldSize ] );
     return true;
   }
-
-  ngOnInit() { }
-
 }

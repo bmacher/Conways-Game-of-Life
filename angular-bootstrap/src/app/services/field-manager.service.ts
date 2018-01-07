@@ -4,7 +4,7 @@ import { Field } from '../classes/field';
 
 @Injectable()
 export class FieldManager {
-  field: Field;
+  public field: Field;
 
   constructor () {  }
 
@@ -36,7 +36,7 @@ export class FieldManager {
 
   getNewStateOfCell( currentStateOfCells: Array<Array<boolean>>, row, col: number ) {
     let livingNeighbours: number = 0;
-    let cell: boolean = currentStateOfCells[row][col];
+    const cell: boolean = currentStateOfCells[row][col];
 
     // check neighbours states and increase livingNeighbours by 1 if a neighbour is living ( alive = true )
     for ( let nbRow = -1; nbRow <= 1; nbRow++ ) {
@@ -47,7 +47,7 @@ export class FieldManager {
         }
       }
     }
-    
+
     // if cell is alive itself, decrease livingNeighbours by 1
     if ( cell ) {
       livingNeighbours--;

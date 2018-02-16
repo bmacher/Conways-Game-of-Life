@@ -3,11 +3,12 @@
 I wanted to learn JavaScript and thought it would be the best way to write Conways Game of life with it. To get basic knowledge about it I started with pure JavaScript, that means I haven't used any frameworks. Now I want to get the same result by using jQuery and Angular and maybe React to discover common JS frameworks. The last step will be an Angular frontend and Node.js backend to learn about REST API and AJAX.
 
 Implementation with
-- [Basic JavaScript](https://en.wikipedia.org/wiki/JavaScript) ✅
+-  [x][Basic JavaScript](https://en.wikipedia.org/wiki/JavaScript) ✅
 - [jQuery](https://jquery.com) ✅
 - [Angular](https://angular.io) & [Bootstrap](https://www.getbootstrap.com) ✅
-- Angluar + [Node.js](https://nodejs.org/en/) + [Express](http://expressjs.com/de/)
-- ([React](https://reactjs.org))
+- [Node.js](https://nodejs.org/en/) + [Express](http://expressjs.com/de/) (back end)
+- [Angular](https://angular.io) on [Node.js](https://nodejs.org/en/) back end
+- [Vue](https://vuejs.org/) on [Node.js](https://nodejs.org/en/) back end
 
 I get all my knowledge from:
 - [SoloLearn](https://www.sololearn.com) (JS, jQuery, HTML and CSS courses)

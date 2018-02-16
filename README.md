@@ -6,7 +6,7 @@ Implementation with
 - [Vanilla JS](http://vanilla-js.com/) ✅
 - [jQuery](https://jquery.com) ✅
 - [Angular](https://angular.io) & [Bootstrap](https://www.getbootstrap.com) ✅
-- [Node.js](https://nodejs.org/en/) + [Express](http://expressjs.com/de/) (back end)
+- [Node.js](https://nodejs.org/en/) + [Express](http://expressjs.com/de/) (back end) ✅
 - [Angular](https://angular.io) on [Node.js](https://nodejs.org/en/) back end
 - [Vue](https://vuejs.org/) on [Node.js](https://nodejs.org/en/) back end
 

@@ -1,7 +1,7 @@
 /** 
  * Backend for Conways Game of Life
  * MIT License
- * © 2018 by Benjamin Macher
+ * Copyright 2018 by Benjamin Macher
 */
 
 // DEPENDENCIES
@@ -18,7 +18,7 @@ app.use(cors());
 app.use( bodyParser.urlencoded({ extended: false }) );
 app.use( bodyParser.json() );
 
-app.use('/rest_test', express.static('rest_test'));
+app.use( '/test', express.static( './test' ));
 
 // ROUTES
 app.get( '/', ( req, res ) => {
@@ -26,10 +26,12 @@ app.get( '/', ( req, res ) => {
 });
 
 // calc next generation array -> array
-app.post( '/cgof/next-gen', ( reg, res ) => {
-  const nextGeneration = helpers.createNextGeneration( reg.body );
+app.post( '/cgof/next-gen', ( req, res ) => {
+  // calculate new stats
+  const newGeneration = helpers.createNextGeneration( req.body );
   
-  res.send( nextGeneration );
+  // send new generation
+  res.send( newGeneration );
 });
 
 // START WEBSERVER

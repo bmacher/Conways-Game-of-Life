@@ -7,8 +7,8 @@ module.exports = {
   createNextGeneration
 };
 
-// HELPER FUNCTIONS
-
+//*****************
+//*HELPER FUNCTIONS
 /**
  * Validates coordinates to avoud overflows
  * 
@@ -24,12 +24,10 @@ function validateCoordinate( fieldSize, coordinate ) {
      1_max-1   1_0   1_1
      -1 -> max & (max) -> 0 
   */
-  if ( coordinate < 0 ) {
-    console.log(fieldSize-1);
-      
+  if ( coordinate < 0 ) {    
     return ( fieldSize - 1 );
   }
-  if ( coordinate == fieldSize - 1 )  {
+  if ( coordinate == fieldSize )  {
     return 0;
   }
   
@@ -42,52 +40,50 @@ function validateCoordinate( fieldSize, coordinate ) {
  * @param {array} currentStateOfCells Array with the current states of all cells
  * @param {number} row Number of the cells row
  * @param {number} col Number of the cells column
- * @returns {boolean} New state of cell
+ * @returns {number} New state of cell (1 OR 0)
  */
 function getNewStateOfCell( currentStateOfCells, row, col ) {
   const cell = currentStateOfCells[ row ][ col ];
-  const fieldSize = currentStateOfCells.lenght;
+  const fieldSize = currentStateOfCells.length;
   let livingNeighbours = 0;
 
   // check neighbours states and increase livingNeighbours by 1 if a neighbour is living ( alive = true )
   for ( let nbRow = -1; nbRow <= 1; nbRow++ ) {
     for ( let nbCol = -1; nbCol <= 1; nbCol++ ) {
-      console.log(row + nbRow);
-      
       if ( currentStateOfCells[ validateCoordinate( fieldSize, row + nbRow )]
-                              [ validateCoordinate( fieldSize, col + nbCol )]) {
+                              [ validateCoordinate( fieldSize, col + nbCol )] == 1) {
         livingNeighbours++;
       }
     }
   }
   // if cell is alive itself, decrease livingNeighbours by 1
-  if ( cell ) {
+  if ( cell === 1 ) {
     livingNeighbours--;
   }
 
   // determine, if cell will live or not
   // 1. Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
-  if ( cell && livingNeighbours < 2 ) {
-    return false;
+  if ( cell === 1 && livingNeighbours < 2 ) {
+    return 0;
   }
   // 2. Any live cell with two or three live neighbours lives on to the next generation.
-  if ( cell && livingNeighbours >= 2 && livingNeighbours <= 3 ) {
-    return true;
+  if ( cell === 1 && livingNeighbours >= 2 && livingNeighbours <= 3 ) {
+    return 1;
   }
   // 3. Any live cell with more than three live neighbours dies, as if by overpopulation.
-  if ( cell && livingNeighbours > 3 ) {
-    return false;
+  if ( cell === 1 && livingNeighbours > 3 ) {
+    return 0;
   }
   // 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-  if ( cell === false && livingNeighbours === 3 ) {
-    return true;
+  if ( cell === 0 && livingNeighbours === 3 ) {
+    return 1;
   }
 
-  return false;
+  return 0;
 }
 
-// CORE FUNCTION
-
+//**************
+//*CORE FUNCTION
 /**
  * Creates the next generation
  * 
@@ -96,23 +92,17 @@ function getNewStateOfCell( currentStateOfCells, row, col ) {
  */
 function createNextGeneration ( currentGeneration ) {
   const fieldSize = currentGeneration.length;
-  let currentStateOfCells = [];
-
-  // get current state of all cells
-  for ( let row = 0; row < fieldSize; row++ ) {
-    currentStateOfCells.push([]);
-    
-    for ( let col = 0; col < fieldSize; col++ ) {
-      currentStateOfCells[ row ].push( currentGeneration[ row ][ col ]);
-    }
-  }
+  let newGeneration = [];
   
-  // update states
+  // calculate new states
   for ( let row = 0; row < fieldSize; row++ ) {
+    newGeneration.push( [] );
     for ( let col = 0; col < fieldSize; col++ ) {
-      currentGeneration[ row ][ col ] = getNewStateOfCell( currentStateOfCells, row, col );
+      newGeneration[ row ].push( getNewStateOfCell( currentGeneration, row, col ) );
     }
   }
+
+  return newGeneration;
 }
 
 }());

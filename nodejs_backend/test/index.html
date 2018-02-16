@@ -15,7 +15,7 @@
           [1, 1, 0, 0, 0],
           [0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0]
-      ]
+      ];
 
       fetch( url, {
         method: 'POST',
@@ -25,13 +25,10 @@
         })
       }).then( res => res.json()
           .then( res => {
-            console.log( res );
-            // document.getElementById('data').innerText = JSON.stringify(res);
             res.forEach( el => {
-              document.getElementById('data').innerHTML = document.getElementById('data').innerHTML + '<br />' + JSON.stringify(el);
+              document.getElementById( 'data' ).innerHTML = document.getElementById( 'data' ).innerHTML + '[' + el + ']<br />';
             });
-          })
-        )
+          }))
         .catch(error => console.error( 'Error:', error ))
     }
   

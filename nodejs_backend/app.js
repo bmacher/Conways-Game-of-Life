@@ -2,7 +2,7 @@
  * Backend for Conways Game of Life
  * MIT License
  * Copyright 2018 by Benjamin Macher
-*/
+ */
 
 // DEPENDENCIES
 const express    = require( 'express' );

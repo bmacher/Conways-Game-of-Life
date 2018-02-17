@@ -1,0 +1,80 @@
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { NgClass } from '@angular/common';
+import { Subscription } from 'rxjs/Subscription';
+import { TimerObservable } from 'rxjs/observable/TimerObservable';
+
+// SERVICE
+import { FieldManager} from '../../services/field-manager.service';
+
+// INTERFACE
+import { Field } from '../../classes/field';
+
+@Component({
+  selector: 'app-conways-field',
+  templateUrl: './conways-field.component.html',
+  styleUrls: ['./conways-field.component.css']
+})
+
+export class ConwaysFieldComponent implements OnInit {
+  private field: Field;
+  private coordinates: string;
+  private subscription: Subscription;
+  private errMessage = '';
+
+  constructor(
+    private route: ActivatedRoute,
+    private fieldManager: FieldManager ) { }
+
+  ngOnInit() {
+    // check, if field size is set
+    if ( this.route.snapshot.paramMap.get( 'fieldsize' ) != null ) {
+      // extract field size from URL
+      const fieldSize = +this.route.snapshot.paramMap.get( 'fieldsize' );
+
+      // number has to be between 2 and 20
+      if ( fieldSize > 1 && fieldSize < 21 ) {
+        // create field
+        this.fieldManager.createField( fieldSize );
+      } else {
+        this.errMessage = 'Your input has to be between 2 and 20...';
+      }
+    }
+  }
+
+  ngOnDestroy () {
+    // check if subscription is defined
+    if ( typeof this.subscription !== 'undefined' ) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  // EVENT HANDLERS -------
+
+  mouseCellEnter ( x, y: number ): void {
+    this.coordinates = '{ x' + x + ', y: ' + y + ' }';
+  }
+
+  mouseCellLeave (): void {
+    this.coordinates = '';
+  }
+
+  btnStart (): void {
+    // set field in running mode
+    this.fieldManager.field.running = true;
+
+    // init timer
+    let timer = TimerObservable.create( 0, 500 );
+    this.subscription = timer.subscribe( () => { this.fieldManager.createNextGeneration(); } );
+  }
+
+  btnStop (): void {
+    // set field in sleeping mode
+    this.fieldManager.field.running = false;
+
+    // clear timer 
+    if ( typeof this.subscription !== 'undefined' ) {
+      this.subscription.unsubscribe();
+    }
+  }
+}

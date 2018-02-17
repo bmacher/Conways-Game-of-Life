@@ -1,6 +1,6 @@
 # Node.js back end with Express
 
-This is a simple backend in node. js with express that handles post-requests containing a generation of cells in JSON format (array of binaries), calculates the new generation and sends it back to the frontend.
+This is a simple backend in node. js with express that handles post-requests containing a generation of cells in JSON format (array of binaries), calculates the new generation and sends it back to the front end.
 
 Example Generation
 

@@ -1,14 +1,14 @@
 # Conways Game of Life with Javascript
 
-I wanted to learn JavaScript and thought it would be the best way to write Conways Game of life with it. To get basic knowledge about it I started with pure JavaScript, that means I haven't used any frameworks. Now I want to get the same result by using jQuery and Angular and maybe React to discover common JS frameworks. The last step will be an Angular frontend and Node.js backend to learn about REST API and AJAX.
+I wanted to learn JavaScript and thought it would be the best way to write Conways Game of life with it. To get basic knowledge about it I started with pure JavaScript, that means I haven't used any frameworks. Then I wanted to get the same result by using jQuery and Angular and maybe Vue to discover common JS frameworks. The last step will be an Angular front end and Node.js + Express back end to learn about REST API and AJAX.
 
 Implementation with
 - [Vanilla JS](http://vanilla-js.com/) ✅
 - [jQuery](https://jquery.com) ✅
 - [Angular](https://angular.io) & [Bootstrap](https://www.getbootstrap.com) ✅
-- [Node.js](https://nodejs.org/en/) + [Express](http://expressjs.com/de/) (back end) ✅
-- [Angular](https://angular.io) on [Node.js](https://nodejs.org/en/) back end
-- [Vue](https://vuejs.org/) on [Node.js](https://nodejs.org/en/) back end
+- [Node.js](https://nodejs.org/en/) + [Express](http://expressjs.com/de/) ✅
+- [Angular](https://angular.io) on [Node.js](https://nodejs.org/en/) ✅
+- [Vue](https://vuejs.org/) on [Node.js](https://nodejs.org/en/)
 
 I get all my knowledge from:
 - [SoloLearn](https://www.sololearn.com) (JS, jQuery, HTML and CSS courses)

@@ -1,0 +1,45 @@
+<div class="content">
+  <div *ngIf="errMessage" class="alert alert-danger" role="alert">
+    {{errMessage}}
+  </div>
+  <div class="field">
+    <!-- NAVIGATION -->
+    <div>
+      <div class="controlLeft">
+        <a routerLink="/nav" class="btn btn-primary">Back</a>
+      </div>
+      <!-- FIELD CONTROL -->
+      <div class="control">
+        <div class="btn-group btn-group">
+          <button type="button" class="btn btn-primary"
+            (click) = "btnStart()"
+            [disabled] = "fieldManager.field.running"
+          >Start</button>
+          <button type="button" class="btn btn-primary"
+            (click) = "fieldManager.createNextGeneration()"
+            [disabled] = "fieldManager.field.running"
+          >Next Generation</button>
+          <button type="button" class="btn btn-danger"
+          (click) = "btnStop()"
+          >Stop</button>
+        </div>
+      </div>
+    </div>
+    <!-- FIELD -->
+    <table *ngIf="!errMessage">
+      <tr *ngFor="let row of fieldManager.field.cells; index as x">
+        <td 
+          *ngFor = "let col of row; index as y"
+          [ngClass] = "{'alive': col, 'dead': !col}"
+          (click) = "fieldManager.toggleStateOfCell( x, y )"
+          (mouseenter) = "mouseCellEnter( x, y )"  
+          (mouseleave) = "mouseCellLeave()"
+        ></td>
+      </tr>
+    </table>
+  </div>
+  <!-- COORDINATES -->
+  <div class="coordinates">
+    <h4>{{coordinates}}</h4>
+  </div>
+</div>

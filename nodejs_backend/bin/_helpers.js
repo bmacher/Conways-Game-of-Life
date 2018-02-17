@@ -8,7 +8,8 @@ module.exports = {
 };
 
 //*****************
-//*HELPER FUNCTIONS
+// HELPER FUNCTIONS
+
 /**
  * Validates coordinates to avoud overflows
  * 
@@ -51,35 +52,35 @@ function getNewStateOfCell( currentStateOfCells, row, col ) {
   for ( let nbRow = -1; nbRow <= 1; nbRow++ ) {
     for ( let nbCol = -1; nbCol <= 1; nbCol++ ) {
       if ( currentStateOfCells[ validateCoordinate( fieldSize, row + nbRow )]
-                              [ validateCoordinate( fieldSize, col + nbCol )] == 1) {
+                              [ validateCoordinate( fieldSize, col + nbCol )]) {
         livingNeighbours++;
       }
     }
   }
   // if cell is alive itself, decrease livingNeighbours by 1
-  if ( cell === 1 ) {
+  if ( cell ) {
     livingNeighbours--;
   }
 
   // determine, if cell will live or not
   // 1. Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
-  if ( cell === 1 && livingNeighbours < 2 ) {
-    return 0;
+  if ( cell && livingNeighbours < 2 ) {
+    return false;
   }
   // 2. Any live cell with two or three live neighbours lives on to the next generation.
-  if ( cell === 1 && livingNeighbours >= 2 && livingNeighbours <= 3 ) {
-    return 1;
+  if ( cell && livingNeighbours >= 2 && livingNeighbours <= 3 ) {
+    return true;
   }
   // 3. Any live cell with more than three live neighbours dies, as if by overpopulation.
-  if ( cell === 1 && livingNeighbours > 3 ) {
-    return 0;
+  if ( cell && livingNeighbours > 3 ) {
+    return false;
   }
   // 4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-  if ( cell === 0 && livingNeighbours === 3 ) {
-    return 1;
+  if ( cell === false && livingNeighbours === 3 ) {
+    return true;
   }
 
-  return 0;
+  return false;
 }
 
 //**************

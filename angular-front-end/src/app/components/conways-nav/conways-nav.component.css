@@ -1,0 +1,21 @@
+.body {
+    margin: 10px;
+}
+  
+.header {
+    background: #6B96D5;
+    padding: 10px;
+    border-radius: 10px;
+    border: 4px solid #007BFF;
+    margin: 10px 0 0 0;
+}
+
+.header h1, h4 {
+    text-align: center;
+}
+
+.header div.alert {
+    border: 2px solid;
+    margin: 5px;
+    text-align: center;
+}

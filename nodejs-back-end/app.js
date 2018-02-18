@@ -23,11 +23,7 @@ app.use( compression() );
 
 // ROUTES
 app.use( '/test', express.static( path.join( __dirname, 'test' )));
-app.use( '/angular', express.static( path.join ( __dirname, 'public/angular' )));
-
-app.get( '/angular', function(req, res) {
-  res.sendFile(__dirname + '/public/angular/' + 'index.html');
-});
+app.use( express.static( path.join( __dirname, 'public/angular' )));
 
 // REST INTERFACE
 app.post( '/cgof/next-gen', ( req, res ) => {
@@ -37,6 +33,11 @@ app.post( '/cgof/next-gen', ( req, res ) => {
   
   // send new generation
   res.json( newGeneration );
+});
+
+// PUBLISH ANGULAR APP
+app.get( '*', (req, res) => {
+  res.sendFile( __dirname + '/public/angular/index.html' ); 
 });
 
 // START WEBSERVER

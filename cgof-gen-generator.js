@@ -2,13 +2,17 @@
 
 'use strict';
 
-// EXPORT FUNCTIONS
+/** 
+ * EXPORT FUNCTIONS
+*/
+
 module.exports = {
   createNextGeneration
 };
 
-//*****************
-// HELPER FUNCTIONS
+/**
+ * HELPER FUNCTIONS
+ */
 
 /**
  * Validates coordinates to avoud overflows
@@ -83,8 +87,10 @@ function getNewStateOfCell( currentStateOfCells, row, col ) {
   return false;
 }
 
-//**************
-//*CORE FUNCTION
+/**
+ * CORE FUNCTION
+ */
+
 /**
  * Creates the next generation
  * 

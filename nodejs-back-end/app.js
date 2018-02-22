@@ -9,8 +9,8 @@ const express    = require('express');
 const path       = require('path');
 const bodyParser = require('body-parser');
 const cors       = require('cors' );
-var compression  = require('compression');
-const helpers    = require('./bin/_helpers');
+const compression  = require('compression');
+const genGenerator = require('./bin/cgof-gen-generator');
 
 // INIT WEBSERVER
 var app = express();
@@ -29,7 +29,7 @@ app.use( express.static( path.join( __dirname, 'public/angular' )));
 app.post( '/cgof/next-gen', ( req, res ) => {
   const oldGeneration = req.body;
   // calculate new stats
-  const newGeneration = helpers.createNextGeneration( oldGeneration );
+  const newGeneration = genGenerator.createNextGeneration( oldGeneration );
   
   // send new generation
   res.json( newGeneration );

@@ -1,16 +1,16 @@
 /** 
  * Backend for Conways Game of Life
  * MIT License
- * Copyright 2018 by Benjamin Macher
+ * Copyright (c) 2018 by Benjamin Macher
  */
 
 // DEPENDENCIES
-const express    = require('express');
-const path       = require('path');
-const bodyParser = require('body-parser');
-const cors       = require('cors' );
+const express      = require('express');
+const path         = require('path');
+const bodyParser   = require('body-parser');
+const cors         = require('cors' );
 const compression  = require('compression');
-const genGenerator = require('./bin/cgof-gen-generator');
+const fieldManager = require('../field-manager');
 
 // INIT WEBSERVER
 var app = express();
@@ -29,7 +29,7 @@ app.use( express.static( path.join( __dirname, 'public/angular' )));
 app.post( '/cgof/next-gen', ( req, res ) => {
   const oldGeneration = req.body;
   // calculate new stats
-  const newGeneration = genGenerator.createNextGeneration( oldGeneration );
+  const newGeneration = fieldManager.createNextGeneration( oldGeneration );
   
   // send new generation
   res.json( newGeneration );

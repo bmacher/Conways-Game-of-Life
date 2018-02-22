@@ -1,0 +1,89 @@
+:root {
+  --green:     #41B783;
+  --darkgreen: #34495C;
+}
+
+body {
+  background: black;
+}
+
+.btn-green {
+  background: var(--darkgreen);
+  border-color: var(--darkgreen);
+}
+
+.btn-green:hover {
+  background: var(--green)
+}
+
+/* CONWAYS NAV SECTION */
+header {
+  background: var(--green);
+  padding: 10px;
+  border-radius: 10px;
+  border: 4px solid var(--darkgreen);
+  margin: 10px 0 0 0;
+}
+
+header h1, h4 {
+  text-align: center;
+}
+
+header div.alert {
+  border: 2px solid;
+  margin: 5px;
+  text-align: center;
+}
+
+/* CONWAYS FIELD SECTION */
+
+.content {
+  background: var(--green);
+  border-radius: 10px;
+  border: 4px solid var(--darkgreen);
+  margin-top: 10px;
+}
+
+.content div.field {
+  padding: 0 0 10px 0;
+}
+
+.content div.field div.control {
+  /*display: none;*/
+  text-align: center;
+}
+
+.content div.field table {
+  margin-left:auto; 
+  margin-right:auto;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.content div.field table tr td  {
+  border: 1px solid black;
+  width: 25px;
+  height: 25px;
+}
+
+.content div.field table tr td.alive {
+  background-color: #FFA03C;
+}
+
+.content div.field table tr td.dead {
+  background-color: white;
+}
+
+.content div.coordinates {
+  height: 25px;
+  text-align: center;
+  border-top: 4px solid var(--darkgreen);
+  padding: 2px;
+  background-color: var(--darkgreen);
+  color: white;
+}
+
+.content div.coordinates h4 {
+  margin: 0;
+  font-size: 10pt;
+}

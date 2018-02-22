@@ -1,10 +1,15 @@
+/**
+ * This file contains the logic for generating
+ * a new generation.
+ */
+
 (function() {
 
 'use strict';
 
 /** 
  * EXPORT FUNCTIONS
-*/
+ */
 
 module.exports = {
   createNextGeneration
@@ -105,7 +110,7 @@ function createNextGeneration ( currentGeneration ) {
   for ( let row = 0; row < fieldSize; row++ ) {
     newGeneration.push( [] );
     for ( let col = 0; col < fieldSize; col++ ) {
-      newGeneration[ row ].push( getNewStateOfCell( currentGeneration, row, col ) );
+      newGeneration[ row ].push( getNewStateOfCell( currentGeneration, row, col ));
     }
   }
 

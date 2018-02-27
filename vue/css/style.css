@@ -1,6 +1,8 @@
 :root {
-  --green:     #41B783;
-  --darkgreen: #34495C;
+  --green:      #41B783;
+  --darkgreen:  #34495C;
+  --cell-alive: #FFA03C;
+  --cell-dead:  white;
 }
 
 body {
@@ -16,13 +18,18 @@ body {
   background: var(--green)
 }
 
+.app {
+  width: 580px;
+  margin: auto;
+}
+
 /* CONWAYS NAV SECTION */
 header {
-  background: var(--green);
-  padding: 10px;
-  border-radius: 10px;
-  border: 4px solid var(--darkgreen);
   margin: 10px 0 0 0;
+  padding: 10px;
+  background: var(--green);
+  border: 4px solid var(--darkgreen);
+  border-radius: 10px;
 }
 
 header h1, h4 {
@@ -38,49 +45,50 @@ header div.alert {
 /* CONWAYS FIELD SECTION */
 
 .content {
-  background: var(--green);
-  border-radius: 10px;
-  border: 4px solid var(--darkgreen);
   margin-top: 10px;
+  text-align: center;
+  background: var(--green);
+  border: 4px solid var(--darkgreen);
+  border-radius: 10px;
+}
+
+.content div.control {
+  padding: 10px 0;
 }
 
 .content div.field {
-  padding: 0 0 10px 0;
+  margin-bottom: 10px;
 }
 
-.content div.field div.control {
-  /*display: none;*/
-  text-align: center;
+.content div.field .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.content div.field table {
-  margin-left:auto; 
-  margin-right:auto;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-.content div.field table tr td  {
-  border: 1px solid black;
+.content div.field .cell  {
   width: 25px;
   height: 25px;
+  margin: 1px;
+  font-size: 8px;
+  border: 1px solid black;
 }
 
-.content div.field table tr td.alive {
-  background-color: #FFA03C;
+.content div.field .alive {
+  background-color: var(--cell-alive);
 }
 
-.content div.field table tr td.dead {
-  background-color: white;
+.content div.field .dead {
+  background-color: var(--cell-dead);
 }
 
 .content div.coordinates {
   height: 25px;
-  text-align: center;
-  border-top: 4px solid var(--darkgreen);
   padding: 2px;
-  background-color: var(--darkgreen);
+  text-align: center;
   color: white;
+  background-color: var(--darkgreen);
+  border-top: 4px solid var(--darkgreen);
 }
 
 .content div.coordinates h4 {

@@ -11,46 +11,66 @@
 <body>
   
   <!-- VUE APP -->
-  <div id="app">
+  <div id="app" class="app">
     <!-- CONWAYS NAVIGATION -->
     <header>
       <h1>Conways Game of Life</h1>
       <div class="input-group mx-auto" style="width:220px;">
-        <input type="text" class="form-control" v-model="fieldSize">
+        <input type="text" class="form-control" 
+          v-model="inp_fieldSize"
+        / >
         <div class="input-group-append">
-          <button class="btn btn-secondary btn-green" type="button" @click="createField()">Create field NxN</button>
+          <button id="btn" class="btn btn-secondary btn-green" type="button" 
+            @click="btnCreateField"
+            :disabled="running"
+          >Create field NxN</button>
         </div>
       </div>
       
       <!-- ERROR HANDLER -->
       <div v-if="errMessage" class="alert alert-danger" role="alert">
-        {{errMessage}}
+        {{ errMessage }}
       </div>
     </header>
 
     <!-- CONWAYS FIELD -->
-    <main v-if="showField">
-      <div class="content">
-        <div class="field">
-          <!-- FIELD CONTROL -->
-          <div class="control">
-            <div class="btn-group btn-group">
-              <button type="button" class="btn btn-secondary btn-green"
-              >Start</button>
-              <button type="button" class="btn btn-secondary btn-green"
-              >Next Generation</button>
-              <button type="button" class="btn btn-danger"
-              >Stop</button>
-            </div>
-          </div>
+    <main class="content" v-if="showField">
+      <!-- FIELD CONTROL -->
+      <div class="control">
+        <div class="btn-group btn-group">
+          <button type="button" class="btn btn-secondary btn-green"
+            @click="btnStartClick"
+            :disabled="running"
+          >Start</button>
+          <button type="button" class="btn btn-secondary btn-green"
+            @click="btnNextGenClick"
+            :disabled="running"
+          >Next Generation</button>
+          <button type="button" class="btn btn-danger"
+            @click="btnStopClick"
+          >Stop</button>
+        </div>
+      </div>
 
-          <!-- FIELD -->
-          
+      <!-- FIELD -->
+      <div class="field">
+      <!-- .row .cell .alive -->
+        <div v-for="x in fieldSize" class="row" >
+          <div v-for="y in fieldSize" class="cell"
+            :class="{
+              'alive': states[ x-1 ][ y-1 ],
+              'dead': !states[ x-1 ][ y-1 ]
+            }"
+            @click="toggleStateOfCell( x, y )"
+            @mouseenter="coordinates = `{ x: ${x}, y: ${y} }`"
+            @mouseleave="coordinates = ''"
+          ></div>
         </div>
-        <!-- COORDINATES -->
-        <div class="coordinates">
-          <h4><!--{{coordinates}}--></h4>
-        </div>
+      </div>
+        
+      <!-- COORDINATES -->
+      <div class="coordinates">
+        <h4>{{ coordinates }}</h4>
       </div>
     </main>
   </div>

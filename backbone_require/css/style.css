@@ -1,0 +1,41 @@
+:root {
+  --blue: #2F72AA;
+  --blue-medium: #2B71B0;
+  --blue-dark: #072B45;
+  --grey: #F8F8F8;
+}
+
+body {
+  background: var(--grey)
+}
+
+.app {
+  width: 580px;
+  margin: auto;
+}
+
+.inp-blue {
+  border-color: var(--blue-dark);
+}
+
+.btn-blue {
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
+}
+
+.btn-blue:hover {
+  background: var(--blue)
+}
+
+/* CONWAYS NAV SECTION */
+header {
+  margin: 10px 0 0 0;
+  padding: 10px;
+  background: var(--grey);
+  border: 4px solid var(--blue-dark);
+  border-radius: 10px;
+}
+
+header h1, h4 {
+  text-align: center;
+}

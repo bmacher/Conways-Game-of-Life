@@ -3,6 +3,8 @@
   --blue-medium: #2B71B0;
   --blue-dark: #072B45;
   --grey: #F8F8F8;
+  --cell-alive: #FEF953;
+  --cell-dead: #FFF;
 }
 
 body {
@@ -10,7 +12,8 @@ body {
 }
 
 .app {
-  width: 580px;
+  /*width: 580px;*/
+  width: 450px;
   margin: auto;
 }
 
@@ -33,9 +36,62 @@ header {
   padding: 10px;
   background: var(--grey);
   border: 4px solid var(--blue-dark);
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 header h1, h4 {
   text-align: center;
+}
+
+/* CONWAYS FIELD SECTION */
+main {
+  margin-top: 10px;
+  text-align: center;
+  background: var(--grey);
+  border: 4px solid var(--blue-dark);
+}
+
+main div.control {
+  padding: 10px 0;
+}
+
+main div.field {
+  height: 250px;
+  margin: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  border: 1px solid var(--blue-dark);
+}
+
+main div.field .cell  {
+  width: calc(100% / 5);
+  height: calc(100% / 5);
+  font-size: 8px;
+  border: 1px solid var(--blue-dark);
+}
+
+main div.field .alive {
+  background-color: var(--cell-alive);
+}
+
+main div.field .dead {
+  background-color: var(--cell-dead);
+}
+
+/* CONWAYS COORDINATION SECTION */
+footer {
+  margin-top: 10px;
+  padding: 5px;
+  text-align: center;
+  color: var(--grey);
+  background-color: var(--blue-dark);
+  border: 4px solid var(--blue-dark);
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+footer h4 {
+  margin: 0;
+  font-size: 10pt;
 }

@@ -3,8 +3,9 @@ define([
   'underscore',
   'backbone',
   'text!templates/app-template.html',
+  'models/field-model',
   'views/field-view'
-], ($, _, Backbone, appTemplate, FieldView) => {
+], ($, _, Backbone, appTemplate, FieldModel, FieldView) => {
   'use strict';
 
   // overall view of the app that handles all outher views
@@ -25,7 +26,10 @@ define([
       this.$btnCreateField = this.$('#btnCreateField');
       this.$inpFieldSize = this.$('#inpFieldSize');
 
-      this.fieldView = new FieldView();
+      // init model and view
+      this.fieldModel = new FieldModel({size: 5});
+      this.fieldView  = new FieldView({model: this.fieldModel});
+      this.fieldView.render();
     },
 
     render: function(){

@@ -19,9 +19,9 @@ require.config({
 	}
 });
 
-require(['views/app-view'], (AppView) => {  
-  "use strict";
+require(['views/app-view'], AppView => {  
+  'use strict';
 
   // Initialize the application view
-  new AppView();
+  var app = new AppView();
 });

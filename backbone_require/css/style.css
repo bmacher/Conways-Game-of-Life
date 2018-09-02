@@ -65,8 +65,6 @@ main div.field {
 }
 
 main div.field .cell  {
-  width: calc(100% / 5);
-  height: calc(100% / 5);
   font-size: 8px;
   border: 1px solid var(--blue-dark);
 }

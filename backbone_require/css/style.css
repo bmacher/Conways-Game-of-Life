@@ -44,6 +44,14 @@ header h1, h4 {
   text-align: center;
 }
 
+header div.alert {
+  display: none;
+  width: 100%;
+  margin: 5px;
+  text-align: center;
+  border: 2px solid;
+}
+
 /* CONWAYS FIELD SECTION */
 main {
   margin-top: 10px;

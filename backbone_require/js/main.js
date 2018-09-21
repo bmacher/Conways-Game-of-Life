@@ -23,5 +23,6 @@ require(['views/app-view'], AppView => {
   'use strict';
 
   // Initialize the application view
-  var app = new AppView();
+	const appView = new AppView();
+	appView.render();
 });

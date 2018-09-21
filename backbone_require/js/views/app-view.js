@@ -8,37 +8,60 @@ define([
 ], ($, _, Backbone, appTemplate, FieldModel, FieldView) => {
   'use strict';
 
-  // overall view of the app that handles all outher views
+  // Overall view of the app that handles all outher views
   var AppView = Backbone.View.extend({
-    // bind the app view to the container element
+    // Bind the app view to the container element
     el: '#app',
     template: _.template(appTemplate),
 
-    // bind event handlers
+    // Bind event handlers
     events: {
       'click #btnCreateField': 'createField'
     },
 
-    initialize: function(){
-      this.render();
-
-      // bind all necessary elements in the initialization of the app
-      this.$btnCreateField = this.$('#btnCreateField');
-      this.$inpFieldSize = this.$('#inpFieldSize');
-
-      // init model and view
-      this.fieldModel = new FieldModel({size: 5});
-      this.fieldView  = new FieldView({model: this.fieldModel});
-      this.fieldView.render();
-    },
-
     render: function(){
       this.$el.html(this.template);
+      
+      // Bind elements to local variables
+      this.$btnCreateField = this.$('#btnCreateField');
+      this.$inpFieldSize   = this.$('#inpFieldSize');
+      this.$errMsgBox      = this.$('#errMsgBox');
     },
 
-    // EVENT HANDLERS
+    /**
+     * EVENT HANDLER SECTION
+     */
+
+    /**
+     * Create field
+     * @returns {Boolean} - true=created, false=failed
+     */
     createField: function(){
+      const inpSize = this.$inpFieldSize.val();
+      this.$errMsgBox.text('').hide();  
       
+      // Validate input
+      if (inpSize === '' || inpSize === null) {
+        this.$errMsgBox.text('Type in a number.').show();
+        return false;
+      } 
+      
+      // Input has to be a number
+      if (isNaN(inpSize)) {
+        this.$errMsgBox.text('You have to type in a number.').show();
+        return false;
+      }
+
+      // Input has to be a number between 2 and 20
+      if (inpSize < 2 || inpSize > 20) {
+        this.$errMsgBox.text('Your input has to be between 2 and 20.').show();
+        return false;
+      }
+
+      // Init model and view
+      this.fieldModel = new FieldModel({size: inpSize});
+      this.fieldView  = new FieldView({model: this.fieldModel});
+      this.fieldView.render();
     }
 
   });

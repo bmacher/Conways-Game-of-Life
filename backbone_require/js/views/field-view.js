@@ -17,7 +17,7 @@ define([
       this.listenTo(this.model, 'change:cells', this.renderCells);
     },
 
-    render: function(){
+    render: function(){      
       this.$el.html(this.template);
       const fieldSize = this.model.get('size');
       
@@ -27,7 +27,7 @@ define([
       this.$btnStop    = this.$('#btnStop');
       this.$field      = this.$('#field');
       
-      // set height to width of field, otherweise it would be 0
+      // Set height to width of field, otherweise it would be 0
       this.$field.css('height', this.$field.width());
 
       // Create all cells -> number of cells equals the square of size      
@@ -43,15 +43,14 @@ define([
           .attr('x', x%fieldSize)
           .attr('y', Math.floor(x/fieldSize));
           // Math.floor returns the largest integer less than or equal to a number.
-        
+
+        this.addCellEventHandler($cell);
         this.$field.append($cell);
       }
-
-      this.addCellEventHandler();
     },
 
     renderCells: function(){
-      $('#field').children().each((key, cell) => {
+      this.$field.children().each((key, cell) => {
         $(cell);
 
         // Get state from model and rerender cell
@@ -59,11 +58,13 @@ define([
     },
 
     /**
+     * EVENT HANDLER SECTION
+     */
+
+    /**
      * Adds all event handlers to cells
      */
-    addCellEventHandler: function(){
-      const $cell = $('.cell');
-      
+    addCellEventHandler: function($cell){      
       $cell.on('click', event => {
         this.toggleStateOfCell($(event.target));     
       });
@@ -82,6 +83,10 @@ define([
         $('footer>h4').html('&copy; Benjamin Macher');
       });
     },
+
+    /**
+     * HELPER SECTION
+     */
     
     /**
      * Handles field state changes by enabling and
@@ -95,11 +100,7 @@ define([
     },
 
     /**
-     * EVENT HANDLER SECTION
-     */
-
-    /**
-     * Changes the state of the cell in the modell
+     * Changes the state of the cell in the model
      * @param {Object} $cell - jQuery element of the cell
      */
     toggleStateOfCell: function($cell){

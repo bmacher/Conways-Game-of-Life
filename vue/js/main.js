@@ -33,7 +33,7 @@ const app = new Vue({
       // validate input
       // input is null
       if ( this.inp_fieldSize === null ) {
-        this.errMessage = 'Typ in a number...';
+        this.errMessage = 'Type in a number...';
       } 
       
       // input has to be a number

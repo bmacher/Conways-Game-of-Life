@@ -15,9 +15,9 @@ define([
       let size = params.size; 
       this.cells = [];           
 
-      // inital fill cells with false => dead
+      // Inital fill cells with false => dead
       for (let x=0; x<size; x++) {
-        // add new row to cell
+        // Add new row to cell
         this.cells.push([]);
 
         for (let y=0; y<size; y++) {

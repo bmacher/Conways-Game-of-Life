@@ -54,6 +54,7 @@ header div.alert {
 
 /* CONWAYS FIELD SECTION */
 main {
+  display: none;
   margin-top: 10px;
   text-align: center;
   background: var(--grey);

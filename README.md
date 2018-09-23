@@ -9,9 +9,10 @@ Implemented with:
 - [Vue](https://vuejs.org/) (without build step) ✅
 - [Node.js](https://nodejs.org/en/) & [Express](http://expressjs.com/de/) ✅
 - [Angular](https://angular.io) on [Node.js](https://nodejs.org/en/) ✅
+- [Backbone](http://backbonejs.org/) & [RequireJS](https://requirejs.org/) ✅
 
 In progess
-- [Backbone](http://backbonejs.org/) & [RequireJS](https://requirejs.org/)
+- ...
 
 Open
 - [Vue](https://vuejs.org/) (with build step)

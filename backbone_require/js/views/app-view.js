@@ -8,9 +8,7 @@ define([
 ], ($, _, Backbone, appTemplate, FieldModel, FieldView) => {
   'use strict';
 
-  // Overall view of the app that handles all outher views
   var AppView = Backbone.View.extend({
-    // Bind the app view to the container element
     el: '#app',
     template: _.template(appTemplate),
 
@@ -26,6 +24,7 @@ define([
       this.$btnCreateField = this.$('#btnCreateField');
       this.$inpFieldSize   = this.$('#inpFieldSize');
       this.$errMsgBox      = this.$('#errMsgBox');
+      this.$field          = this.$('main');
     },
 
     /**
@@ -38,30 +37,59 @@ define([
      */
     createField: function(){
       const inpSize = this.$inpFieldSize.val();
-      this.$errMsgBox.text('').hide();  
+      
+      // Reset view
+      this.$errMsgBox.text('').hide();
       
       // Validate input
-      if (inpSize === '' || inpSize === null) {
+      if (this.validateInput(inpSize)) {
+        // Clear field view and model in case they were 
+        // created before and remove cells from dom
+        // aswell as all event listeners
+        if (this.fieldModel || this.fieldView) {
+          this.fieldModel.destroy(); 
+          this.fieldModel = null;
+          this.fieldView.close();
+          this.fieldView = null;
+          console.log('Remove active view and model.');          
+        }
+
+        // Init model and view
+        console.log('Initialize field view and model.');
+        this.fieldModel = new FieldModel({size: inpSize});
+        this.fieldView  = new FieldView({model: this.fieldModel});      
+        this.$field.show();
+        this.fieldView.render();
+      } else {
+        this.$field.hide();
+      }
+    },
+
+    /**
+     * Validates the input (number between 2 and 20)
+     * 
+     * @param {string} input - Value of the input field
+     * @returns {boolean} 
+     */
+    validateInput: function(input) {
+      if (input === '' || input === null) {
         this.$errMsgBox.text('Type in a number.').show();
         return false;
       } 
       
       // Input has to be a number
-      if (isNaN(inpSize)) {
+      if (isNaN(input)) {
         this.$errMsgBox.text('You have to type in a number.').show();
         return false;
       }
 
       // Input has to be a number between 2 and 20
-      if (inpSize < 2 || inpSize > 20) {
+      if (input < 2 || input > 20) {
         this.$errMsgBox.text('Your input has to be between 2 and 20.').show();
         return false;
       }
-
-      // Init model and view
-      this.fieldModel = new FieldModel({size: inpSize});
-      this.fieldView  = new FieldView({model: this.fieldModel});
-      this.fieldView.render();
+      
+      return true;
     }
 
   });

@@ -2,14 +2,23 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'text!templates/field-template.html',
+  'text!templates/field-template.html'
 ], ($, _, Backbone, FieldTemplate) => {
   'use strict';
 
   var FieldView = Backbone.View.extend({
     el: 'main',
-    model: null,
     template: _.template(FieldTemplate),
+    model: {},
+
+    events: {
+      'click #btnStart': 'clickBtnStart',
+      'click #btnNextGen': 'clickBtnNextGen',
+      'click #btnStop': 'clickBtnStop',
+      'click .cell': 'clickOnCell',
+      'mouseover .cell': 'mouseOverCell',
+      'mouseout .cell': 'mouseOutCell'
+    },
 
     initialize: function(){      
       // React to field state changes
@@ -17,11 +26,18 @@ define([
       this.listenTo(this.model, 'change:cells', this.renderCells);
     },
 
+    close: function(){
+      // Remove all event listeners, otherwise their are added twice
+      // if view is instancieded twice
+      this.$el.empty();
+      this.undelegateEvents();
+    },
+
     render: function(){      
       this.$el.html(this.template);
       const fieldSize = this.model.get('size');
       
-      // Bind elements to local variables
+      // Bind elements to local variables and add event handlers
       this.$btnStart   = this.$('#btnStart');
       this.$btnNextGen = this.$('#btnNextGen');
       this.$btnStop    = this.$('#btnStop');
@@ -32,7 +48,7 @@ define([
 
       // Create all cells -> number of cells equals the square of size      
       for (let x=0; x<Math.pow(fieldSize, 2); x++) {
-        let $cell = $('<div class="cell dead" />');          
+        const $cell = $('<div class="cell dead" />');          
         
         // Set dynamic width and height based on field size
         // 100% divided by field size
@@ -40,20 +56,27 @@ define([
         $cell
           .width('calc(100% / '+ this.model.get('size') +')')
           .height('calc(100% / '+ this.model.get('size') +')')
-          .attr('x', x%fieldSize)
-          .attr('y', Math.floor(x/fieldSize));
+          .attr('row', Math.floor(x/fieldSize))
+          .attr('col', x%fieldSize);
           // Math.floor returns the largest integer less than or equal to a number.
 
-        this.addCellEventHandler($cell);
         this.$field.append($cell);
       }
     },
 
     renderCells: function(){
-      this.$field.children().each((key, cell) => {
-        $(cell);
-
-        // Get state from model and rerender cell
+      this.$field.children().each((key, cell) => {                
+        const $cell = $(cell);
+        const row = $cell.attr('row');
+        const col = $cell.attr('col');
+        
+        if (this.model.getStateOfCell(row, col)) {
+          $cell.addClass('alive');
+          $cell.removeClass('dead');
+        } else {
+          $cell.addClass('dead');
+          $cell.removeClass('alive');
+        }
       });
     },
 
@@ -62,26 +85,55 @@ define([
      */
 
     /**
-     * Adds all event handlers to cells
+     * Click on Start button 
      */
-    addCellEventHandler: function($cell){      
-      $cell.on('click', event => {
-        this.toggleStateOfCell($(event.target));     
-      });
+    clickBtnStart: function(){
+      console.log('Start game');
+      this.timer = setInterval(() => this.model.createNextGeneration(), 500);
+      this.model.set('running', true);
+    },
+    
+    /**
+     * Click on Start button 
+     */
+    clickBtnNextGen: function(){
+      console.log('Create next generation');
+      this.model.createNextGeneration();
+    },
+    
+    /**
+     * Click on Start button 
+     */
+    clickBtnStop: function(){
+      console.log('Stop game');
+      clearInterval(this.timer);
+      this.model.set('running', false);
+    },
 
-      // Show coordinates of cell on mouseover
-      $cell.on('mouseover', event => {
-        const $cell = $(event.target);
-        $('footer>h4').html(
-          // { x:1, y:2 }
-          '{ '+$cell.attr('x')+', '+$cell.attr('y')+' }'
-        );
-      });
+    /**
+     * Click on cell
+     */
+    clickOnCell: function(event){
+      this.toggleStateOfCell($(event.target));
+    },
 
-      // Hide coordinates of cell on mouseover
-      $cell.on('mouseout', () => {
-        $('footer>h4').html('&copy; Benjamin Macher');
-      });
+    /**
+     * Mouseover cell
+     */
+    mouseOverCell: function(event){
+      const $cell = $(event.target);
+
+      $('footer>h4').html(
+        // { row:1, col:2 }
+        '{ '+$cell.attr('row')+', '+$cell.attr('col')+' }'
+      );
+    },
+
+    /**
+     * Mouseout Cell
+     */
+    mouseOutCell: function(){
+      $('footer>h4').html('&copy; Benjamin Macher');
     },
 
     /**
@@ -104,11 +156,16 @@ define([
      * @param {Object} $cell - jQuery element of the cell
      */
     toggleStateOfCell: function($cell){
-      // Change state in model
-      
       if (!this.model.get('running')) { 
+        // Change state in model  
+        this.model.setStateOfCell(
+          $cell.attr('row'),
+          $cell.attr('col'),
+          $cell.hasClass('dead') ? true : false
+        );
+        
         $cell.toggleClass('alive dead');
-      }      
+      }
     }
   });
 

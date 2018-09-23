@@ -9,7 +9,7 @@ require.config({
 				'jquery'
 			],
 			exports: 'Backbone'
-    }
+		}
   },
   paths: {
 		jquery: '../node_modules/jquery/dist/jquery',
@@ -22,7 +22,8 @@ require.config({
 require(['views/app-view'], AppView => {  
   'use strict';
 
-  // Initialize the application view
+	// Initialize the application view
+	console.log('Initialize app view.');
 	const appView = new AppView();
 	appView.render();
 });
